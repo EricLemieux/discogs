@@ -30,4 +30,7 @@ dependencies {
 
     // Use the Kotlin JUnit integration.
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+
+    // HTTP Client
+    implementation("com.github.kittinunf.fuel:fuel:2.2.2")
 }

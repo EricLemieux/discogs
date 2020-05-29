@@ -1,11 +1,16 @@
 package com.github.ericlemieux.discogs
 
-import kotlin.test.Test
-import kotlin.test.assertTrue
+import com.github.ericlemieux.discogs.auth.AuthClientKeySecret
+import com.github.ericlemieux.discogs.http.Http
+import kotlin.test.*
 
 class DiscogsTest {
     @Test fun testSomeLibraryMethod() {
-        val classUnderTest = Discogs()
-        assertTrue(classUnderTest.someLibraryMethod(), "someLibraryMethod should return 'true'")
+        // Setup
+        val auth = AuthClientKeySecret("", "")
+        val discogs = Discogs(Http(auth, ""))
+
+        // Verify
+        assertTrue(discogs.someLibraryMethod(), "someLibraryMethod should return 'true'")
     }
 }

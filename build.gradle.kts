@@ -10,6 +10,9 @@ plugins {
 
     // Apply the java-library plugin for API and implementation separation.
     `java-library`
+
+    // Spotless formatting
+    id("com.diffplug.gradle.spotless") version "4.0.1"
 }
 
 repositories {
@@ -33,4 +36,7 @@ dependencies {
 
     // HTTP Client
     implementation("com.github.kittinunf.fuel:fuel:2.2.2")
+
+    // Json unmarshalling
+    implementation("com.google.code.gson:gson:2.8.6")
 }

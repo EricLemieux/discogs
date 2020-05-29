@@ -5,14 +5,15 @@ import kotlin.test.assertEquals
 
 internal class AuthClientKeySecretTest {
 
-    @Test fun getAuthHeader() {
-        // Setup
-        val auth = AuthClientKeySecret("my-key", "my-secret")
+  @Test
+  fun getAuthHeader() {
+    // Setup
+    val auth = AuthClientKeySecret("my-key", "my-secret")
 
-        // Act
-        val actual = auth.getAuthHeader()
+    // Act
+    val actual = auth.getAuthHeader()
 
-        // Verify
-        assertEquals("Discogs key=my-key, secret=my-secret", actual)
-    }
+    // Verify
+    assertEquals("Discogs key=my-key, secret=my-secret", actual)
+  }
 }

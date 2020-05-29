@@ -9,16 +9,19 @@ import kotlin.reflect.KClass
 const val URL_BASE = "https://api.discogs.com/"
 
 private const val HEADER_USER_AGENT = "User-Agent"
+
 private const val HEADER_AUTHORIZATION = "Authorization"
 
 class Http(private val auth: Auth, private val userAgent: String) {
-    fun <T> get(route: String, c: Class<T>): T {
-        val res = Fuel.get(route)
-                .set(HEADER_USER_AGENT, userAgent)
-                .set(HEADER_AUTHORIZATION, auth.getAuthHeader())
-                .responseString()
-                .third.get()
+  fun <T> get(route: String, c: Class<T>): T {
+    val res =
+        Fuel.get(route)
+            .set(HEADER_USER_AGENT, userAgent)
+            .set(HEADER_AUTHORIZATION, auth.getAuthHeader())
+            .responseString()
+            .third
+            .get()
 
-        return  Gson().fromJson(res, c)
-    }
+    return Gson().fromJson(res, c)
+  }
 }

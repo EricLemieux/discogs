@@ -5,38 +5,44 @@
  */
 
 plugins {
-    // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.3.71"
+  // Apply the Kotlin JVM plugin to add support for Kotlin.
+  id("org.jetbrains.kotlin.jvm") version "1.3.71"
 
-    // Apply the java-library plugin for API and implementation separation.
-    `java-library`
+  // Apply the java-library plugin for API and implementation separation.
+  `java-library`
 
-    // Spotless formatting
-    id("com.diffplug.gradle.spotless") version "4.0.1"
+  // Spotless formatting
+  id("com.diffplug.gradle.spotless") version "4.0.1"
 }
 
 repositories {
-    // Use jcenter for resolving dependencies.
-    // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+  // Use jcenter for resolving dependencies.
+  // You can declare any Maven/Ivy/file repository here.
+  jcenter()
 }
 
 dependencies {
-    // Align versions of all Kotlin components
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+  // Align versions of all Kotlin components
+  implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
 
-    // Use the Kotlin JDK 8 standard library.
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+  // Use the Kotlin JDK 8 standard library.
+  implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    // Use the Kotlin test library.
-    testImplementation("org.jetbrains.kotlin:kotlin-test")
+  // Use the Kotlin test library.
+  testImplementation("org.jetbrains.kotlin:kotlin-test")
 
-    // Use the Kotlin JUnit integration.
-    testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
+  // Use the Kotlin JUnit integration.
+  testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
-    // HTTP Client
-    implementation("com.github.kittinunf.fuel:fuel:2.2.2")
+  // HTTP Client
+  implementation("com.github.kittinunf.fuel:fuel:2.2.2")
 
-    // Json unmarshalling
-    implementation("com.google.code.gson:gson:2.8.6")
+  // Json unmarshalling
+  implementation("com.google.code.gson:gson:2.8.6")
+}
+
+spotless {
+  kotlin {
+    ktfmt()
+  }
 }

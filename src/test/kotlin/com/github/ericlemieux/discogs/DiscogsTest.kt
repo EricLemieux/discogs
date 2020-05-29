@@ -5,12 +5,13 @@ import com.github.ericlemieux.discogs.http.Http
 import kotlin.test.*
 
 class DiscogsTest {
-    @Test fun testSomeLibraryMethod() {
-        // Setup
-        val auth = AuthClientKeySecret("", "")
-        val discogs = Discogs(Http(auth, ""))
+  @Test
+  fun testSomeLibraryMethod() {
+    // Setup
+    val auth = AuthClientKeySecret("", "")
+    val discogs = Discogs(Http(auth, ""))
 
-        // Verify
-        assertTrue(discogs.someLibraryMethod(), "someLibraryMethod should return 'true'")
-    }
+    // Verify
+    assertTrue(discogs.someLibraryMethod(), "someLibraryMethod should return 'true'")
+  }
 }

@@ -3,8 +3,6 @@ package com.github.ericlemieux.discogs.http
 import com.github.ericlemieux.discogs.auth.Auth
 import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
-import java.lang.reflect.Type
-import kotlin.reflect.KClass
 
 const val URL_BASE = "https://api.discogs.com/"
 

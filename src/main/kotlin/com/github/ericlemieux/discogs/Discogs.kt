@@ -9,8 +9,8 @@ class Discogs(private val http: Http) {
     return true
   }
 
-  fun getRelease(): Release {
-    val res = http.get("$URL_BASE/releases/249504", Release::class.java)
+  fun getRelease(id: Int): Release {
+    val res = http.get("$URL_BASE/releases/$id", Release::class.java)
     println(res)
     return res
   }

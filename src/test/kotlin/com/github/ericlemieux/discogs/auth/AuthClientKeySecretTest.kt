@@ -5,6 +5,16 @@ import kotlin.test.assertEquals
 
 internal class AuthClientKeySecretTest {
 
+  @Test(expected = AuthException::class)
+  fun exceptionWhenMissingKey() {
+    AuthClientKeySecret("", "some-secret")
+  }
+
+  @Test(expected = AuthException::class)
+  fun exceptionWhenMissingSecret() {
+    AuthClientKeySecret("some-key", "")
+  }
+
   @Test
   fun getAuthHeader() {
     // Setup

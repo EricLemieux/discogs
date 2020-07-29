@@ -10,9 +10,6 @@ plugins {
 
   // Apply the java-library plugin for API and implementation separation.
   `java-library`
-
-  // Spotless formatting
-  id("com.diffplug.gradle.spotless") version "4.0.1"
 }
 
 dependencies {
@@ -33,10 +30,4 @@ dependencies {
 
   // Json unmarshalling
   implementation("com.google.code.gson:gson:2.8.6")
-}
-
-spotless {
-  kotlin {
-    ktfmt()
-  }
 }

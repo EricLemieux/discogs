@@ -1,7 +1,5 @@
 package com.github.ericlemieux.discogs.models
 
-import com.google.gson.annotations.JsonAdapter
-import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class Release(

@@ -3,7 +3,7 @@ package com.github.ericlemieux.discogs.auth
 class AuthClientKeySecret(private val key: String, private val secret: String) : Auth {
   init {
     if (key.isBlank()) {
-      throw IllegalArgumentException("Authentication key is required");
+      throw IllegalArgumentException("Authentication key is required")
     }
 
     if (secret.isBlank()) {

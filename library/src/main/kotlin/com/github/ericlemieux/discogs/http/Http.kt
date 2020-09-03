@@ -13,7 +13,7 @@ private const val HEADER_AUTHORIZATION = "Authorization"
 class Http(private val auth: Auth, private val userAgent: String) {
   fun <T> get(route: String, c: Class<T>): T {
     val res =
-        Fuel.get(route)
+        Fuel.get("${URL_BASE}${route}")
             .set(HEADER_USER_AGENT, userAgent)
             .set(HEADER_AUTHORIZATION, auth.getAuthHeader())
             .responseString()

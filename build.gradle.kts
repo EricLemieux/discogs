@@ -1,5 +1,5 @@
 plugins {
-  id("com.diffplug.gradle.spotless") version "4.0.1"
+  id("com.diffplug.spotless") version "5.3.0"
 }
 
 buildscript {
@@ -16,7 +16,7 @@ allprojects {
 
 subprojects {
   apply {
-    plugin("com.diffplug.gradle.spotless")
+    plugin("com.diffplug.spotless")
     plugin("java")
   }
 

@@ -26,7 +26,8 @@ dependencies {
   testImplementation("org.jetbrains.kotlin:kotlin-test-junit")
 
   // HTTP Client
-  implementation("com.github.kittinunf.fuel:fuel:2.2.2")
+  implementation("com.squareup.okhttp3:okhttp:4.8.1")
+  testImplementation("com.squareup.okhttp3:mockwebserver:4.8.1")
 
   // Json unmarshalling
   implementation("com.google.code.gson:gson:2.8.6")

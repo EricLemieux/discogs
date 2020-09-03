@@ -1,8 +1,10 @@
 package com.github.ericlemieux.discogs.http
 
 import com.github.ericlemieux.discogs.auth.Auth
-import com.github.kittinunf.fuel.Fuel
 import com.google.gson.Gson
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import java.net.URL
 
 const val URL_BASE = "https://api.discogs.com/"
 
@@ -10,16 +12,21 @@ private const val HEADER_USER_AGENT = "User-Agent"
 
 private const val HEADER_AUTHORIZATION = "Authorization"
 
-class Http(private val auth: Auth, private val userAgent: String) {
+class Http(private val auth: Auth, private val userAgent: String, private val domain: URL = URL(URL_BASE)) {
   fun <T> get(route: String, c: Class<T>): T {
-    val res =
-        Fuel.get("${URL_BASE}${route}")
-            .set(HEADER_USER_AGENT, userAgent)
-            .set(HEADER_AUTHORIZATION, auth.getAuthHeader())
-            .responseString()
-            .third
-            .get()
+    val client = OkHttpClient()
 
-    return Gson().fromJson(res, c)
+    val request =
+        Request.Builder()
+            .url("${domain}${route}")
+            .addHeader(HEADER_USER_AGENT, userAgent)
+            .addHeader(HEADER_AUTHORIZATION, auth.getAuthHeader())
+            .build()
+
+    val res = client.newCall(request).execute()
+
+    val resJson = res.body?.string()
+
+    return Gson().fromJson(resJson, c)
   }
 }

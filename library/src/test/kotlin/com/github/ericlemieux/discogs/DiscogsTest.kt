@@ -1,18 +1,28 @@
 package com.github.ericlemieux.discogs
 
-import com.github.ericlemieux.discogs.auth.AuthClientKeySecret
 import com.github.ericlemieux.discogs.auth.AuthEmpty
 import com.github.ericlemieux.discogs.http.Http
-import kotlin.test.*
+import kotlin.test.assertEquals
+import okhttp3.mockwebserver.MockResponse
+import okhttp3.mockwebserver.MockWebServer
+import org.junit.Test
 
-class DiscogsTest {
+internal class DiscogsTest {
   @Test
-  fun testSomeLibraryMethod() {
+  fun getRelease() {
     // Setup
-    val auth = AuthEmpty()
-    val discogs = Discogs(Http(auth, ""))
+    val mockWebServer = MockWebServer()
+    mockWebServer.start()
+    val baseUrl = mockWebServer.url("/release/123")
+    mockWebServer.enqueue(
+        MockResponse().setBody(javaClass.getResource("/payloads/release-200.json").readText()))
+    val http = Http(AuthEmpty(), "", baseUrl.toUrl())
+    val discogs = Discogs(http)
+
+    // Act
+    val release = discogs.releaseRepository.getRelease(123)
 
     // Verify
-    assertTrue(discogs.someLibraryMethod(), "someLibraryMethod should return 'true'")
+    assertEquals("Never Gonna Give You Up", release.title)
   }
 }

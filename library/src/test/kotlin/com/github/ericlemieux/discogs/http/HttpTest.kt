@@ -1,10 +1,10 @@
 package com.github.ericlemieux.discogs.http
 
 import com.github.ericlemieux.discogs.auth.AuthEmpty
+import kotlin.test.assertEquals
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.Test
-import kotlin.test.assertEquals
 
 internal class HttpTest {
   @Test

@@ -1,18 +1,14 @@
 package com.github.ericlemieux.discogs
 
 import com.github.ericlemieux.discogs.http.Http
-import com.github.ericlemieux.discogs.http.URL_BASE
-import com.github.ericlemieux.discogs.models.Release
+import com.github.ericlemieux.discogs.release.Release
+import com.github.ericlemieux.discogs.release.ReleaseRepository
 
 /** Main entrypoint for the Discogs library */
 class Discogs(private val http: Http) {
+  val releaseRepository: ReleaseRepository = ReleaseRepository(http)
+
   fun someLibraryMethod(): Boolean {
     return true
-  }
-
-  fun getRelease(id: Int): Release {
-    val res = http.get("/releases/$id", Release::class.java)
-    println(res)
-    return res
   }
 }

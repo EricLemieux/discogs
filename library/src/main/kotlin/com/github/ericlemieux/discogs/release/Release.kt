@@ -1,4 +1,4 @@
-package com.github.ericlemieux.discogs.models
+package com.github.ericlemieux.discogs.release
 
 import java.util.*
 

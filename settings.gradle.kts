@@ -9,3 +9,10 @@ file("samples").listFiles()
     include(it.name)
     project(":${it.name}").projectDir = it
   }
+
+pluginManagement {
+  repositories {
+    gradlePluginPortal()
+    jcenter()
+  }
+}

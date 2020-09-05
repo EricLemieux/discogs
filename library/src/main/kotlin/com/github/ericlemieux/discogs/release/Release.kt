@@ -2,6 +2,13 @@ package com.github.ericlemieux.discogs.release
 
 import java.util.*
 
+/**
+ * The Release resource represents a particular physical or digital object released by one or more
+ * Artists.
+ *
+ * @see <a href="https://www.discogs.com/developers/#page:database,header:database-release">Discogs
+ * API docs Release</a>
+ */
 data class Release(
     val id: Int?,
     val title: String?,

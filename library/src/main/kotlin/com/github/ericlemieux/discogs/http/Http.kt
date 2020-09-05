@@ -1,7 +1,9 @@
 package com.github.ericlemieux.discogs.http
 
 import com.github.ericlemieux.discogs.authentication.Authentication
+import com.google.gson.FieldNamingPolicy
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import java.net.URL
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -17,6 +19,9 @@ class Http(
     private val userAgent: String,
     private val domain: URL = URL(URL_BASE)
 ) {
+  private val gson: Gson =
+      GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
+
   fun <T> get(route: String, c: Class<T>): T {
     val client = OkHttpClient()
 
@@ -31,6 +36,6 @@ class Http(
 
     val resJson = res.body?.string()
 
-    return Gson().fromJson(resJson, c)
+    return gson.fromJson(resJson, c)
   }
 }

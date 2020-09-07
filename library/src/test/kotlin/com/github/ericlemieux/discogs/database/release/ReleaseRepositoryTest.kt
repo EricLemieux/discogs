@@ -23,7 +23,7 @@ internal class ReleaseRepositoryTest {
     val release = ReleaseRepository(http).getRelease(123)
 
     // Verify
-    assertEquals("Never Gonna Give You Up", release.title)
+    assertEquals("Never Gonna Give You Up", release?.title)
   }
 
   @Test
@@ -41,6 +41,6 @@ internal class ReleaseRepositoryTest {
 
     // Verify
     assertEquals(1, mockWebServer.requestCount)
-    assertEquals("Never Gonna Give You Up", release.title)
+    assertEquals("Never Gonna Give You Up", release?.title)
   }
 }

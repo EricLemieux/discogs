@@ -20,7 +20,7 @@ internal class HttpTest {
     val res = http.get("/test", TestModel::class.java)
 
     // Verify
-    assertEquals("hello world", res.value)
+    assertEquals("hello world", res.value?.value)
   }
 
   @Test
@@ -36,7 +36,24 @@ internal class HttpTest {
     val res = http.get("/test", TestModel::class.java)
 
     // Verify
-    assertEquals("hello", res.firstName)
+    assertEquals("hello", res.value?.firstName)
+  }
+
+  @Test
+  fun returnsAnErrorWhenNetworkRequestFails() {
+    // Setup
+    val mockWebServer = MockWebServer()
+    mockWebServer.start()
+    val baseUrl = mockWebServer.url("/test")
+    mockWebServer.enqueue(
+        MockResponse().setResponseCode(404).setBody("{\"message\":\"Release not found.\"}"))
+    val http = Http(EmptyAuthentication(), "", baseUrl.toUrl())
+
+    // Act
+    val res = http.get("/test", TestModel::class.java)
+
+    // Verify
+    assertEquals("Release not found.", res.error?.message)
   }
 
   class TestModel(var value: String, var firstName: String)

@@ -15,13 +15,19 @@ class ReleaseRepository(private val http: Http) {
    * href="https://www.discogs.com/developers/#page:database,header:database-release-get">Get a
    * release</a>
    */
-  fun getRelease(id: Int, currency: Currency? = null): Release {
+  fun getRelease(id: Int, currency: Currency? = null): Release? {
     var url = "/releases/$id"
 
     if (currency != null) {
       url += "?curr_abbr=${currency}"
     }
 
-    return http.get(url, Release::class.java)
+    val res = http.get(url, Release::class.java)
+
+    if (res.value == null || res.error != null) {
+      return null
+    }
+
+    return res.value
   }
 }

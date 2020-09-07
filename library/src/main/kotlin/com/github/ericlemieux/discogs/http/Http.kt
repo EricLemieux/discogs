@@ -22,7 +22,7 @@ class Http(
   private val gson: Gson =
       GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
 
-  fun <T> get(route: String, c: Class<T>): T {
+  fun <T> get(route: String, c: Class<T>): Response<T> {
     val client = OkHttpClient()
 
     val request =
@@ -33,9 +33,12 @@ class Http(
             .build()
 
     val res = client.newCall(request).execute()
-
     val resJson = res.body?.string()
 
-    return gson.fromJson(resJson, c)
+    if (!res.isSuccessful) {
+      return Response(null, gson.fromJson(resJson, Error::class.java))
+    }
+
+    return Response(gson.fromJson(resJson, c), null)
   }
 }

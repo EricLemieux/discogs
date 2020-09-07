@@ -23,6 +23,6 @@ internal class DiscogsTest {
     val release = discogs.releaseRepository.getRelease(123)
 
     // Verify
-    assertEquals("Never Gonna Give You Up", release.title)
+    assertEquals("Never Gonna Give You Up", release?.title)
   }
 }

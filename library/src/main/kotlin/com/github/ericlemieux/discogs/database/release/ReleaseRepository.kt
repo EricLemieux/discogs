@@ -1,7 +1,7 @@
-package com.github.ericlemieux.discogs.release
+package com.github.ericlemieux.discogs.database.release
 
-import com.github.ericlemieux.discogs.marketplace.Currency
 import com.github.ericlemieux.discogs.http.Http
+import com.github.ericlemieux.discogs.marketplace.Currency
 
 class ReleaseRepository(private val http: Http) {
 

@@ -1,8 +1,8 @@
-package com.github.ericlemieux.discogs.release
+package com.github.ericlemieux.discogs.database.release
 
 import com.github.ericlemieux.discogs.authentication.EmptyAuthentication
-import com.github.ericlemieux.discogs.marketplace.Currency
 import com.github.ericlemieux.discogs.http.Http
+import com.github.ericlemieux.discogs.marketplace.Currency
 import kotlin.test.assertEquals
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

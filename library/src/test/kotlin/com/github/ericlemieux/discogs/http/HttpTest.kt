@@ -1,7 +1,6 @@
 package com.github.ericlemieux.discogs.http
 
 import com.github.ericlemieux.discogs.authentication.EmptyAuthentication
-import com.github.ericlemieux.discogs.release.ReleaseRepository
 import kotlin.test.assertEquals
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

@@ -1,5 +1,7 @@
 package com.github.ericlemieux.discogs.database.release
 
+import com.github.ericlemieux.discogs.database.artist.ArtistSummary
+import com.google.gson.annotations.SerializedName
 import java.util.*
 
 /**
@@ -10,14 +12,17 @@ import java.util.*
  * API docs Release</a>
  */
 data class Release(
-    val id: Int?,
     val title: String?,
+    val id: Int?,
+    val artists: List<ArtistSummary>?,
     val dataQuality: String?,
     val thumb: String?,
     val country: String?,
     val dateAdded: Date?,
     val dateChanged: Date?,
-    val estimatedWeight: Int?, // Unsure if the type is correct
+    val estimatedWeight: Int?,
+    @SerializedName("extraartists")
+    val extraArtists: List<ArtistSummary>?,
     val formatQuality: Int?,
     val lowestPrice: Float?,
     val masterId: Int?,

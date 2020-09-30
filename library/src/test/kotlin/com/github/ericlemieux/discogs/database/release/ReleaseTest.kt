@@ -2,12 +2,13 @@ package com.github.ericlemieux.discogs.database.release
 
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
-import org.junit.Test
 import kotlin.test.assertEquals
+import org.junit.Test
 
 internal class ReleaseTest {
   // TODO: Figure out where to put this so that it's somewhat global
-  val gson = GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
+  val gson =
+      GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
 
   @Test
   fun foo() {

@@ -9,7 +9,7 @@ internal class ReleaseTest {
   private val json = Json()
 
   @Test
-  fun foo() {
+  fun parseReleaseJson() {
     // Setup
     val payload = javaClass.getResource("/payloads/release-200.json").readText()
 
@@ -22,5 +22,7 @@ internal class ReleaseTest {
     assertEquals(1, release.artists?.size)
     assertEquals("Rick Astley", release.artists?.get(0)?.name)
     assertEquals(2, release.extraArtists?.size)
+    assertEquals(2, release.images?.size)
+    assertEquals(1, release.videos?.size)
   }
 }

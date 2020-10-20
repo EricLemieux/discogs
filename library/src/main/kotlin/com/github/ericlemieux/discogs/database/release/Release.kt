@@ -1,6 +1,8 @@
 package com.github.ericlemieux.discogs.database.release
 
 import com.github.ericlemieux.discogs.database.artist.ArtistSummary
+import com.github.ericlemieux.discogs.database.media.image.Image
+import com.github.ericlemieux.discogs.database.media.video.Video
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
@@ -17,6 +19,8 @@ data class Release(
     val artists: List<ArtistSummary>?,
     val dataQuality: String?,
     val thumb: String?,
+    // TODO: community
+    // TODO: companies
     val country: String?,
     val dateAdded: Date?,
     val dateChanged: Date?,
@@ -24,6 +28,11 @@ data class Release(
     @SerializedName("extraartists")
     val extraArtists: List<ArtistSummary>?,
     val formatQuality: Int?,
+    // TODO: formats
+    // TODO: genres
+    // TODO: identifiers
+    val images: List<Image>?,
+    // TODO: labels
     val lowestPrice: Float?,
     val masterId: Int?,
     val masterUrl: String?,
@@ -32,8 +41,10 @@ data class Release(
     val released: String?,
     val releasedFormatted: String?,
     val resourceUrl: String?,
+    // TODO: series
     val status: String?,
+    // TODO: styles
+    // TODO: tracklist
     val uri: String?,
-    val year: Int?
-// TODO: Arrays of other entities
-)
+    val videos: List<Video>?,
+    val year: Int?)

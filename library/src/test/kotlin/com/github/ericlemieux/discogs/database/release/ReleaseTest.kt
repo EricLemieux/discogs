@@ -1,22 +1,20 @@
 package com.github.ericlemieux.discogs.database.release
 
-import com.google.gson.FieldNamingPolicy
-import com.google.gson.GsonBuilder
+import com.github.ericlemieux.discogs.serialization.json.Json
 import kotlin.test.assertEquals
 import org.junit.Test
 
 internal class ReleaseTest {
-  // TODO: Figure out where to put this so that it's somewhat global
-  val gson =
-      GsonBuilder().setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create()
+
+  private val json = Json()
 
   @Test
   fun foo() {
     // Setup
-    val json = javaClass.getResource("/payloads/release-200.json").readText()
+    val payload = javaClass.getResource("/payloads/release-200.json").readText()
 
     // Act
-    val release = gson.fromJson(json, Release::class.java)
+    val release = json.fromString(payload, Release::class.java)
 
     // Verify
     assertEquals("Never Gonna Give You Up", release.title)

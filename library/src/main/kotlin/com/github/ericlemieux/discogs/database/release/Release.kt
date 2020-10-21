@@ -1,6 +1,8 @@
 package com.github.ericlemieux.discogs.database.release
 
 import com.github.ericlemieux.discogs.database.artist.ArtistSummary
+import com.github.ericlemieux.discogs.database.community.ReleaseCommunityContributions
+import com.github.ericlemieux.discogs.database.label.LabelSummary
 import com.github.ericlemieux.discogs.database.media.image.Image
 import com.github.ericlemieux.discogs.database.media.video.Video
 import com.google.gson.annotations.SerializedName
@@ -16,23 +18,23 @@ import java.util.*
 data class Release(
     val title: String?,
     val id: Int?,
-    val artists: List<ArtistSummary>?,
+    val artists: List<ArtistSummary> = listOf(),
     val dataQuality: String?,
     val thumb: String?,
-    // TODO: community
-    // TODO: companies
+    val community: ReleaseCommunityContributions?,
+    val companies: List<LabelSummary> = listOf(),
     val country: String?,
     val dateAdded: Date?,
     val dateChanged: Date?,
     val estimatedWeight: Int?,
     @SerializedName("extraartists")
-    val extraArtists: List<ArtistSummary>?,
+    val extraArtists: List<ArtistSummary> = listOf(),
     val formatQuality: Int?,
     // TODO: formats
-    // TODO: genres
+    val genres: List<String> = listOf(),
     // TODO: identifiers
-    val images: List<Image>?,
-    // TODO: labels
+    val images: List<Image> = listOf(),
+    val labels: List<LabelSummary> = listOf(),
     val lowestPrice: Float?,
     val masterId: Int?,
     val masterUrl: String?,
@@ -43,8 +45,8 @@ data class Release(
     val resourceUrl: String?,
     // TODO: series
     val status: String?,
-    // TODO: styles
+    val style: List<String> = listOf(),
     // TODO: tracklist
     val uri: String?,
-    val videos: List<Video>?,
+    val videos: List<Video> = listOf(),
     val year: Int?)

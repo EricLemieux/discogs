@@ -1,6 +1,8 @@
 package com.github.ericlemieux.discogs.database.release
 
 import com.github.ericlemieux.discogs.database.artist.ArtistSummary
+import com.github.ericlemieux.discogs.database.community.ReleaseCommunityContributions
+import com.github.ericlemieux.discogs.database.label.LabelSummary
 import com.github.ericlemieux.discogs.database.media.image.Image
 import com.github.ericlemieux.discogs.database.media.video.Video
 import com.google.gson.annotations.SerializedName
@@ -19,8 +21,8 @@ data class Release(
     val artists: List<ArtistSummary>?,
     val dataQuality: String?,
     val thumb: String?,
-    // TODO: community
-    // TODO: companies
+    val community: ReleaseCommunityContributions?,
+    val companies: List<LabelSummary>?,
     val country: String?,
     val dateAdded: Date?,
     val dateChanged: Date?,
@@ -32,7 +34,7 @@ data class Release(
     val genres: List<String>?,
     // TODO: identifiers
     val images: List<Image>?,
-    // TODO: labels
+    val labels: List<LabelSummary>?,
     val lowestPrice: Float?,
     val masterId: Int?,
     val masterUrl: String?,

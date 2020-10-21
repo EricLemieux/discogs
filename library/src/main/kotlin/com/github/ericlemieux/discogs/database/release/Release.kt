@@ -29,7 +29,7 @@ data class Release(
     val extraArtists: List<ArtistSummary>?,
     val formatQuality: Int?,
     // TODO: formats
-    // TODO: genres
+    val genres: List<String>?,
     // TODO: identifiers
     val images: List<Image>?,
     // TODO: labels
@@ -43,7 +43,7 @@ data class Release(
     val resourceUrl: String?,
     // TODO: series
     val status: String?,
-    // TODO: styles
+    val style: List<String>?,
     // TODO: tracklist
     val uri: String?,
     val videos: List<Video>?,

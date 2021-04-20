@@ -13,6 +13,6 @@ file("samples").listFiles()
 pluginManagement {
   repositories {
     gradlePluginPortal()
-    jcenter()
+    mavenCentral()
   }
 }

@@ -2,9 +2,9 @@ package com.github.ericlemieux.discogs.http
 
 import com.github.ericlemieux.discogs.authentication.Authentication
 import com.github.ericlemieux.discogs.serialization.json.Json
+import java.net.URL
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.net.URL
 
 const val URL_BASE = "https://api.discogs.com/"
 
